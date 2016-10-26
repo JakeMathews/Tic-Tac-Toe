@@ -20,5 +20,8 @@
     "url": "https://github.com/JakeMathews/Tic-Tac-Toe/issues"
   },
   "homepage": "https://github.com/JakeMathews/Tic-Tac-Toe#readme",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "express": "^4.14.0"
+  }
 }
