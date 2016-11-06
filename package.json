@@ -11,7 +11,7 @@
     "url": "git+https://github.com/JakeMathews/Tic-Tac-Toe.git"
   },
   "keywords": [
-    "Tic-Tac-Toe",
+    "Tic-Tac-Toe", 
     "Node.js"
   ],
   "author": "Jake Mathews",
