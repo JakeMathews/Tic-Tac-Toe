@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tic-Tac-Toe</title>
+  <link href="static/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .block {
+      height: 2em;
+      width: 2em;
+      border-style: solid;
+      border-color: white;
+      border-width: medium;
+      background-color: #4cbcdb;
+      font-size: 40px;
+      text-align: center;
+      line-height: 1.9em;
+      color: white;
+      border-radius: 0.5em;
+    }
+
+    .text {
+      color: white;
+      /*display: none;
+      opacity: 0;*/
+    }
+
+    .well {
+      margin: 1em;
+      width: 35em;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" style="width:240px">
+    <div class="row">
+      <div class="col-xs-4">
+        <div class="block" onclick="test(this.id)" id="11"><text style="opacity: 0"></text></div>
+      </div>
+      <div class="col-xs-4">
+        <div class="block" onclick="test(this.id)" id="12"><text style="opacity: 0"></text></div>
+      </div>
+      <div class="col-xs-4">
+        <div class="block" onclick="test(this.id)" id="13"><text style="opacity: 0"></text></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4">
+        <div class="block" onclick="test(this.id)" id="21"><text style="opacity: 0"></text></div>
+      </div>
+      <div class="col-xs-4">
+        <div class="block" onclick="test(this.id)" id="22"><text style="opacity: 0"></text></div>
+      </div>
+      <div class="col-xs-4">
+        <div class="block" onclick="test(this.id)" id="23"><text style="opacity: 0"></text></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4">
+        <div class="block" onclick="test(this.id)" id="31"><text style="opacity: 0"></text></div>
+      </div>
+      <div class="col-xs-4">
+        <div class="block" onclick="test(this.id)" id="32"><text style="opacity: 0"></text></div>
+      </div>
+      <div class="col-xs-4">
+        <div class="block" onclick="test(this.id)" id="33"><text style="opacity: 0"></text></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="static/js/bootstrap.min.js"></script>
+
+  <script>
+    let turn = "X";
+
+    function test(id) {
+      console.log(id + " was pressed!");
+      let square = document.getElementById(id).getElementsByTagName("text")[0];
+      //console.log(square.innerHTML);
+      if (square.innerHTML !== "X" && square.innerHTML !== "O") {
+        square.innerHTML = turn;
+        turn = turn === "X" ? "O" : "X";
+        fade(square, 400);
+      }
+
+
+    }
+
+    function fade(element, time) {
+      const steps = time / 25;
+      let timer;
+      let fadeOut = function() {
+        element.style.opacity = parseFloat(element.style.opacity) - (1 / steps);
+        if (element.style.opacity < 0.1) {
+          element.style.opacity = 0;
+          element.style.display = "none";
+          element.innerHTML = "";
+          clearInterval(timer);
+        }
+      }
+
+      let fadeIn = function() {
+        element.style.opacity = parseFloat(element.style.opacity) + (1 / steps);
+        if (element.style.opacity > 0.9) {
+          element.style.opacity = 1;
+          clearInterval(timer);
+        }
+      }
+
+      if (parseFloat(element.style.opacity) < 0.1) { // Fade In
+        element.style.display = "block";
+        element.style.opacity = 0;
+        timer = setInterval(fadeIn, time / steps);
+      } else { // Else fade out
+        timer = setInterval(fadeOut, time / steps);
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -28,7 +28,7 @@
       <div class="col-xs-8 col-sm-5 col-md-4 col-lg-4">
         <div class="well">
           <form>
-            <button type="button" class="btn btn-primary btn-block" aria-label="Left Align" id="create">Create Game</button> <br />
+            <button type="button" class="btn btn-primary btn-block" aria-label="Left Align" id="local">Create Local Game</button> <br />
             <!--<button type="button" class="btn btn-primary btn-block" aria-label="Left Align" id="join">Join Game</button>
             !-->
           </form>
@@ -43,9 +43,9 @@
     <script src="static/js/bootstrap.min.js"></script>
 
     <script>
-      document.getElementById("create").addEventListener("click", function() {
+      document.getElementById("local").addEventListener("click", function() {
         $.post({
-          url: "/create",
+          url: "/local",
           data: {
 
           },

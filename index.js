@@ -23,20 +23,20 @@ app.get('/', function(req, res) {
 	});
 });
 
-app.post('/create', urlencodedParser, function(req, res) {
+app.post('/local', urlencodedParser, function(req, res) {
 	// Recieve user data to create game here
 	res.status(200).send({
-		location: "create"
+		location: "local"
 	});
 });
 
-app.get("/create", function(req, res) {
+app.get("/local", function(req, res) {
 	// Create the game and send the game file
-	res.sendFile("game.html", {
+	res.sendFile("local.html", {
 		root: path.join(__dirname, "/public")
 	});
 });
 
-app.listen(8000, function() {
-	console.log("Tic-Tac-Toe server listening on port 8000!");
+app.listen(8001, function() {
+	console.log("Tic-Tac-Toe server listening on port 8001!");
 });
