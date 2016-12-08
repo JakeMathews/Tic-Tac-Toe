@@ -4,6 +4,7 @@ let path = require("path");
 let express = require("express");
 let bodyParser = require("body-parser");
 let app = express();
+let port = 8000;
 
 //var router = express.Router([options]);
 
@@ -12,10 +13,10 @@ var jsonParser = bodyParser.json()
 
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({
-	extended: false
-})
-
-app.use('/static', express.static('public'));
+		extended: false
+	})
+	//app.use(express.static(__dirname + '/public'));
+app.use('/static', express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
 	res.sendFile("index.html", {
@@ -37,6 +38,10 @@ app.get("/local", function(req, res) {
 	});
 });
 
-app.listen(8001, function() {
-	console.log("Tic-Tac-Toe server listening on port 8001!");
+app.listen(port, function() {
+	console.log("Tic-Tac-Toe server listening on port " + port + "!");
 });
+
+function close() {
+	app.close();
+}
