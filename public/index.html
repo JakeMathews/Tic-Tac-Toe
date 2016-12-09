@@ -29,7 +29,6 @@
         <div class="well">
           <form>
             <button type="button" class="btn btn-primary btn-block" aria-label="Left Align" id="local">Create Local Game</button> <br />
-            <button type="button" class="btn btn-primary btn-block" aria-label="Left Align" id="firebase">Firebase Test</button> <br />
             <!--<button type="button" class="btn btn-primary btn-block" aria-label="Left Align" id="join">Join Game</button>
             !-->
           </form>
@@ -47,18 +46,6 @@
       document.getElementById("local").addEventListener("click", function() {
         $.post({
           url: "/local",
-          data: {
-
-          },
-          success: function(res) {
-            window.location.href = res.location;
-          },
-          dataType: "json"
-        });
-      });
-      document.getElementById("firebase").addEventListener("click", function() {
-        $.post({
-          url: "/firebase",
           data: {
 
           },

@@ -31,23 +31,9 @@ app.post('/local', urlencodedParser, function(req, res) {
 	});
 });
 
-app.post('/firebase', urlencodedParser, function(req, res) {
-	// Recieve user data to create game here
-	res.status(200).send({
-		location: "firebase"
-	});
-});
-
 app.get("/local", function(req, res) {
 	// Create the game and send the game file
 	res.sendFile("local.html", {
-		root: path.join(__dirname, "/public")
-	});
-});
-
-app.get("/firebase", function(req, res) {
-	// Create the game and send the game file
-	res.sendFile("firebasetest.html", {
 		root: path.join(__dirname, "/public")
 	});
 });
