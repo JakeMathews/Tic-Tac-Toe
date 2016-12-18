@@ -2,209 +2,209 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tic-Tac-Toe</title>
-  <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tic-Tac-Toe</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-  <style>
-     :root {
-      --size: 70px
-    }
+    <style>
+         :root {
+            --size: 70px
+        }
 
-    .block {
-      height: 2em;
-      width: 2em;
-      border-style: solid;
-      border-color: white;
-      border-width: medium;
-      background-color: #4cbcdb;
-      font-size: var(--size);
-      text-align: center;
-      line-height: 1.9em;
-      color: white;
-      border-radius: 0.5em;
-    }
+        .block {
+            height: 2em;
+            width: 2em;
+            border-style: solid;
+            border-color: white;
+            border-width: medium;
+            background-color: #4cbcdb;
+            font-size: var(--size);
+            text-align: center;
+            line-height: 1.9em;
+            color: white;
+            border-radius: 0.5em;
+        }
 
-    .text {
-      color: white;
-    }
+        .text {
+            color: white;
+        }
 
-    .container {
-      width: 6em;
-      font-size: var(--size);
-    }
-  </style>
+        .container {
+            width: 6em;
+            font-size: var(--size);
+        }
+    </style>
 </head>
 
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-4">
-        <div class="block" onclick="test(this.id)" id="11"><text style="opacity: 0"></text></div>
-      </div>
-      <div class="col-xs-4">
-        <div class="block" onclick="test(this.id)" id="12"><text style="opacity: 0"></text></div>
-      </div>
-      <div class="col-xs-4">
-        <div class="block" onclick="test(this.id)" id="13"><text style="opacity: 0"></text></div>
-      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="block" onclick="test(this.id)" id="11"><text style="opacity: 0"></text></div>
+            </div>
+            <div class="col-xs-4">
+                <div class="block" onclick="test(this.id)" id="12"><text style="opacity: 0"></text></div>
+            </div>
+            <div class="col-xs-4">
+                <div class="block" onclick="test(this.id)" id="13"><text style="opacity: 0"></text></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="block" onclick="test(this.id)" id="21"><text style="opacity: 0"></text></div>
+            </div>
+            <div class="col-xs-4">
+                <div class="block" onclick="test(this.id)" id="22"><text style="opacity: 0"></text></div>
+            </div>
+            <div class="col-xs-4">
+                <div class="block" onclick="test(this.id)" id="23"><text style="opacity: 0"></text></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="block" onclick="test(this.id)" id="31"><text style="opacity: 0"></text></div>
+            </div>
+            <div class="col-xs-4">
+                <div class="block" onclick="test(this.id)" id="32"><text style="opacity: 0"></text></div>
+            </div>
+            <div class="col-xs-4">
+                <div class="block" onclick="test(this.id)" id="33"><text style="opacity: 0"></text></div>
+            </div>
+        </div>
     </div>
-    <div class="row">
-      <div class="col-xs-4">
-        <div class="block" onclick="test(this.id)" id="21"><text style="opacity: 0"></text></div>
-      </div>
-      <div class="col-xs-4">
-        <div class="block" onclick="test(this.id)" id="22"><text style="opacity: 0"></text></div>
-      </div>
-      <div class="col-xs-4">
-        <div class="block" onclick="test(this.id)" id="23"><text style="opacity: 0"></text></div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-4">
-        <div class="block" onclick="test(this.id)" id="31"><text style="opacity: 0"></text></div>
-      </div>
-      <div class="col-xs-4">
-        <div class="block" onclick="test(this.id)" id="32"><text style="opacity: 0"></text></div>
-      </div>
-      <div class="col-xs-4">
-        <div class="block" onclick="test(this.id)" id="33"><text style="opacity: 0"></text></div>
-      </div>
-    </div>
-  </div>
 
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="static/js/bootstrap.min.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
 
-  <script>
-    const fadeTime = 400;
-    let turn = "X";
+    <script>
+        const fadeTime = 200;
+        let turn = "X";
 
-    function test(id) {
-      console.log(id + " was pressed!");
-      let square = document.getElementById(id).getElementsByTagName("text")[0];
-      //console.log(square.innerHTML);
-      if (square.innerHTML !== "X" && square.innerHTML !== "O") {
-        square.innerHTML = turn;
-        turn = turn === "X" ? "O" : "X";
-        fade(square, fadeTime);
-        let winner = checkGame();
-        if (winner !== null) {
-          console.log(winner + " wins!");
-          setTimeout(function() {
-            clearBoard();
-            alert(winner + " wins!");
-          }, fadeTime);
+        function test(id) {
+            console.log(id + " was pressed!");
+            let square = document.getElementById(id).getElementsByTagName("text")[0];
+            //console.log(square.innerHTML);
+            if (square.innerHTML !== "X" && square.innerHTML !== "O") {
+                square.innerHTML = turn;
+                turn = turn === "X" ? "O" : "X";
+                fade(square, fadeTime);
+                let winner = checkGame();
+                if (winner !== null) {
+                    console.log(winner + " wins!");
+                    setTimeout(function() {
+                        clearBoard();
+                        alert(winner + " wins!");
+                    }, fadeTime);
+                }
+            }
         }
-      }
-    }
 
-    function checkGame() {
-      // Check rows
-      for (let i = 1; i < 4; i++) {
-        let first = document.getElementById(i.toString() + "1").getElementsByTagName("text")[0].innerHTML;
-        for (let j = 2; j < 4; j++) {
-          let square = document.getElementById(i.toString() + j.toString()).getElementsByTagName("text")[0].innerHTML;
-          if (square === "" || first === "" || square !== first) {
-            break;
-          }
-          if (j === 3) {
-            return first;
-          }
+        function checkGame() {
+            // Check rows
+            for (let i = 1; i < 4; i++) {
+                let first = document.getElementById(i.toString() + "1").getElementsByTagName("text")[0].innerHTML;
+                for (let j = 2; j < 4; j++) {
+                    let square = document.getElementById(i.toString() + j.toString()).getElementsByTagName("text")[0].innerHTML;
+                    if (square === "" || first === "" || square !== first) {
+                        break;
+                    }
+                    if (j === 3) {
+                        return first;
+                    }
+                }
+            }
+
+            // Check columns
+            for (let i = 1; i < 4; i++) {
+                let first = document.getElementById("1" + i.toString()).getElementsByTagName("text")[0].innerHTML;
+                for (let j = 2; j < 4; j++) {
+                    let square = document.getElementById(j.toString() + i.toString()).getElementsByTagName("text")[0].innerHTML;
+                    if (square === "" || first === "" || square !== first) {
+                        break;
+                    }
+                    if (j === 3) {
+                        return first;
+                    }
+                }
+            }
+
+            // Check Diagonals
+            let first = document.getElementById("11").getElementsByTagName("text")[0].innerHTML;
+            let second = document.getElementById("22").getElementsByTagName("text")[0].innerHTML;
+            let third = document.getElementById("33").getElementsByTagName("text")[0].innerHTML;
+            if (first === second && second === third && !(first === "" || second === "" || third === "")) {
+                return first;
+            }
+            first = document.getElementById("31").getElementsByTagName("text")[0].innerHTML;
+            third = document.getElementById("13").getElementsByTagName("text")[0].innerHTML
+            if (first === second && second === third && !(first === "" || second === "" || third === "")) {
+                return first;
+            }
+
+            // Check for tie
+            let count = 9;
+            for (let i = 1; i < 4; i++) {
+                for (let j = 1; j < 4; j++) {
+                    let square = document.getElementById(i.toString() + j.toString()).getElementsByTagName("text")[0].innerHTML;
+                    if (square === "") {
+                        return null;
+                    }
+                    count--;
+                }
+            }
+            return "Nobody";
         }
-      }
 
-      // Check columns
-      for (let i = 1; i < 4; i++) {
-        let first = document.getElementById("1" + i.toString()).getElementsByTagName("text")[0].innerHTML;
-        for (let j = 2; j < 4; j++) {
-          let square = document.getElementById(j.toString() + i.toString()).getElementsByTagName("text")[0].innerHTML;
-          if (square === "" || first === "" || square !== first) {
-            break;
-          }
-          if (j === 3) {
-            return first;
-          }
+        function clearBoard() {
+            for (let i = 1; i < 4; i++) {
+                for (let j = 1; j < 4; j++) {
+                    let square = document.getElementById(i.toString() + j.toString()).getElementsByTagName("text")[0];
+                    fade(square, fadeTime);
+                    setTimeout(function() {
+                        square.innerHTML = "";
+                    }, fadeTime);
+                }
+            }
         }
-      }
 
-      // Check Diagonals
-      let first = document.getElementById("11").getElementsByTagName("text")[0].innerHTML;
-      let second = document.getElementById("22").getElementsByTagName("text")[0].innerHTML;
-      let third = document.getElementById("33").getElementsByTagName("text")[0].innerHTML;
-      if (first === second && second === third && !(first === "" || second === "" || third === "")) {
-        return first;
-      }
-      first = document.getElementById("31").getElementsByTagName("text")[0].innerHTML;
-      third = document.getElementById("13").getElementsByTagName("text")[0].innerHTML
-      if (first === second && second === third && !(first === "" || second === "" || third === "")) {
-        return first;
-      }
+        function fade(element, time) {
+            const steps = time / 25;
+            let timer;
+            let fadeOut = function() {
+                element.style.opacity = parseFloat(element.style.opacity) - (1 / steps);
+                if (element.style.opacity < 0.1) {
+                    element.style.opacity = 0;
+                    element.style.display = "none";
+                    element.innerHTML = "";
+                    clearInterval(timer);
+                } else if (element.innerHTML === "") {
+                    clearInterval(timer);
+                }
+            }
 
-      // Check for tie
-      let count = 9;
-      for (let i = 1; i < 4; i++) {
-        for (let j = 1; j < 4; j++) {
-          let square = document.getElementById(i.toString() + j.toString()).getElementsByTagName("text")[0].innerHTML;
-          if (square === "") {
-            return null;
-          }
-          count--;
+            let fadeIn = function() {
+                element.style.opacity = parseFloat(element.style.opacity) + (1 / steps);
+                if (element.style.opacity > 0.9) {
+                    element.style.opacity = 1;
+                    clearInterval(timer);
+                } else if (element.innerHTML === "") {
+                    clearInterval(timer);
+                }
+            }
+
+            if (parseFloat(element.style.opacity) < 0.1) { // Fade In
+                element.style.display = "block";
+                element.style.opacity = 0;
+                timer = setInterval(fadeIn, time / steps);
+            } else { // Else fade out
+                timer = setInterval(fadeOut, time / steps);
+            }
         }
-      }
-      return "Nobody";
-    }
-
-    function clearBoard() {
-      for (let i = 1; i < 4; i++) {
-        for (let j = 1; j < 4; j++) {
-          let square = document.getElementById(i.toString() + j.toString()).getElementsByTagName("text")[0];
-          fade(square, fadeTime);
-          setTimeout(function() {
-            square.innerHTML = "";
-          }, fadeTime);
-        }
-      }
-    }
-
-    function fade(element, time) {
-      const steps = time / 25;
-      let timer;
-      let fadeOut = function() {
-        element.style.opacity = parseFloat(element.style.opacity) - (1 / steps);
-        if (element.style.opacity < 0.1) {
-          element.style.opacity = 0;
-          element.style.display = "none";
-          element.innerHTML = "";
-          clearInterval(timer);
-        } else if (element.innerHTML === "") {
-          clearInterval(timer);
-        }
-      }
-
-      let fadeIn = function() {
-        element.style.opacity = parseFloat(element.style.opacity) + (1 / steps);
-        if (element.style.opacity > 0.9) {
-          element.style.opacity = 1;
-          clearInterval(timer);
-        } else if (element.innerHTML === "") {
-          clearInterval(timer);
-        }
-      }
-
-      if (parseFloat(element.style.opacity) < 0.1) { // Fade In
-        element.style.display = "block";
-        element.style.opacity = 0;
-        timer = setInterval(fadeIn, time / steps);
-      } else { // Else fade out
-        timer = setInterval(fadeOut, time / steps);
-      }
-    }
-  </script>
+    </script>
 </body>
 
 </html>

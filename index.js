@@ -15,8 +15,8 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({
 		extended: false
 	})
-	//app.use(express.static(__dirname + '/public'));
-app.use('/static', express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));
+//app.use('/static', express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
 	res.sendFile("index.html", {
@@ -33,15 +33,15 @@ app.post('/local', urlencodedParser, function(req, res) {
 
 app.get("/local", function(req, res) {
 	// Create the game and send the game file
-	res.sendFile("local.html", {
+	res.sendFile("index.html", {
 		root: path.join(__dirname, "/public")
 	});
 });
 
-app.listen(port, function() {
+let serv = app.listen(port, function() {
 	console.log("Tic-Tac-Toe server listening on port " + port + "!");
 });
 
 function close() {
-	app.close();
+	serv.close();
 }
